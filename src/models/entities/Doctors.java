@@ -1,40 +1,53 @@
 package models.entities;
 
-public class Doctors {
-    private int id;
-    public String fullName;
-    private Patients patient;
-    private Therapy therapy;
+import models.enums.Therapy;
 
-    public int getId() {
-        return id;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+public class Doctors extends User implements Purpose{
+
+    private Date startDate;
+    private Date endDate;
+
+    public Doctors() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Doctors(int id, String name, String surname) {
+        super(id, name, surname);
     }
 
-    public String getFullName() {
-        return fullName;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Patients getPatient() {
-        return patient;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setPatient(Patients patient) {
-        this.patient = patient;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public Therapy getTherapy() {
-        return therapy;
+    public void endTime(){
+        Date date = this.startDate;
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, 5);
+        this.endDate = cal.getTime();
     }
 
-    public void setTherapy(Therapy therapy) {
-        this.therapy = therapy;
+    @Override
+    public void doTherapy(Therapy rh, Patients patient) {
+        patient.setTherapy(rh);
+        Date today = new Date();
+        this.startDate =today;
+        endTime();
     }
 }

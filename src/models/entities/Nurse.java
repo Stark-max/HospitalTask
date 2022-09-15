@@ -1,32 +1,16 @@
 package models.entities;
 
-public class Nurse {
-    private int id;
-    public String fullName;
-    private Therapy pTherapy;
-    private Patients nursePatient;
+import models.enums.Therapy;
 
-    public int getId() {
-        return id;
+public class Nurse extends User implements Purpose{
+    public Nurse() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Nurse(int id, String name, String surname) {
+        super(id, name, surname);
     }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public Therapy getpTherapy() {
-        return pTherapy;
-    }
-
-    public void setpTherapy(Therapy pTherapy) {
-        this.pTherapy = pTherapy;
+    @Override
+    public void doTherapy(Therapy rh, Patients patient){
+        patient.setTherapy(rh);
     }
 }
