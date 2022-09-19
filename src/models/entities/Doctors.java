@@ -2,15 +2,13 @@ package models.entities;
 
 import models.enums.Therapy;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
+
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
-public class Doctors extends User implements Purpose{
-
-    private Date startDate;
-    private Date endDate;
+public class Doctors extends User{
 
     public Doctors() {
     }
@@ -19,35 +17,20 @@ public class Doctors extends User implements Purpose{
         super(id, name, surname);
     }
 
-    public Date getStartDate() {
-        return startDate;
-    }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
 
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public void endTime(){
-        Date date = this.startDate;
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.DATE, 5);
-        this.endDate = cal.getTime();
+    public void healingInfo() {
+        System.out.printf("Doctor -> %s %s\n",
+                this.name,
+                this.surname
+        );
     }
 
     @Override
-    public void doTherapy(Therapy rh, Patients patient) {
-        patient.setTherapy(rh);
-        Date today = new Date();
-        this.startDate =today;
-        endTime();
+    public String toString() {
+        return "Doctors{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
     }
 }

@@ -1,3 +1,4 @@
+import models.entities.Admin;
 import models.entities.Doctors;
 import models.entities.Nurse;
 import models.entities.Patients;
@@ -5,14 +6,56 @@ import models.enums.Therapy;
 
 public class Main {
     public static void main(String[] args) {
-        Doctors doctor = new Doctors(1,"Asan","Tom");
-        Patients patient= new Patients(1,"Damir","Amanov");
-        patient.setDoctor(doctor);
-        doctor.doTherapy(Therapy.MEDICINE, patient);
+        Admin admin = new Admin();
         Nurse nurse = new Nurse(1,"Med","Sister");
-        patient.setNurse(nurse);
-
-
+        Nurse nurse2 = new Nurse(2,"Med","Sister");
+        Nurse nurse3 = new Nurse(3,"Med","Sister");
+        Doctors doctor = new Doctors(1,"Asan","Tom");
+        Doctors doctor2 = new Doctors(2,"As","To");
+        Patients patient= new Patients(1,"Damir","Amanov");
+        Patients patient2= new Patients(2,"Dir","Aman");
+        Patients patient3= new Patients(3,"Dar","Aov");
+        Patients patient4= new Patients(4,"Dr","Av");
+        Patients patient5= new Patients(5,"Dir","Kanat");
+        Patients patient6= new Patients(6,"Dar","Ata");
+        Patients patient7= new Patients(7,"Damir","Anov");
+        Patients patient8= new Patients(8,"Drs","Kata");
+        Patients patient9= new Patients(9,"Dir","Sama");
+        Patients patient10= new Patients(10,"Dr","Tara");
+        admin.doTherapy(Therapy.MEDICINE, patient,doctor,nurse);
+        admin.doTherapy(Therapy.OPERATION, patient2,doctor,nurse);
+        admin.doTherapy(Therapy.PROCEDURE, patient3,doctor,nurse);
+        admin.doTherapy(Therapy.MEDICINE, patient4,doctor,nurse2);
+        admin.doTherapy(Therapy.OPERATION, patient5,doctor,nurse2);
+        admin.doTherapy(Therapy.OPERATION, patient6,doctor2,nurse2);
+        admin.doTherapy(Therapy.MEDICINE, patient7,doctor2,nurse3);
+        admin.doTherapy(Therapy.PROCEDURE, patient8,doctor2,nurse3);
+        admin.doTherapy(Therapy.PROCEDURE, patient9,doctor2,nurse3);
+        admin.doTherapy(Therapy.OPERATION, patient10,doctor2,nurse3);
         patient.print();
+        patient2.print();
+        patient3.print();
+        patient4.print();
+        patient5.print();
+        patient6.print();
+        patient7.print();
+        patient8.print();
+        patient9.print();
+        patient10.print();
+        doctor.healingInfo();
+        doctor2.healingInfo();
+        nurse.healingInfo();
+        nurse2.healingInfo();
+        nurse3.healingInfo();
+        patient.printOwnInfo();
+        patient2.printOwnInfo();
+        patient3.printOwnInfo();
+        patient4.printOwnInfo();
+        patient5.printOwnInfo();
+        patient6.printOwnInfo();
+        patient7.printOwnInfo();
+        patient8.printOwnInfo();
+        patient9.printOwnInfo();
+        patient10.printOwnInfo();
     }
 }

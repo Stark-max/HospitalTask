@@ -3,26 +3,26 @@ package models.entities;
 import models.enums.Therapy;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Patients extends User {
-    private Doctors doctor;
+    public Nurse nurse;
+    public Doctors doctor;
     private Therapy therapy;
-    private Nurse nurse;
+    private Date startDate;
+    private Date endDate;
+
 
     public Patients() {
     }
 
-    public Patients(int id, String name, String surname, Doctors doctor, Therapy therapy,Nurse nurse) {
+    public Patients(int id, String name, String surname ,Therapy therapy) {
         super(id, name, surname);
-        this.nurse=nurse;
-        this.doctor = doctor;
         this.therapy = therapy;
     }
-
     public Patients(int id, String name, String surname) {
         super(id, name, surname);
     }
-
 
     public Nurse getNurse() {
         return nurse;
@@ -40,6 +40,22 @@ public class Patients extends User {
         this.doctor = doctor;
     }
 
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
     public Therapy getTherapy() {
         return therapy;
     }
@@ -51,26 +67,31 @@ public class Patients extends User {
     @Override
     public String toString() {
         return "Patients{" +
-                "doctor=" + doctor +
                 ", therapy=" + therapy +
-                ", nurse=" + nurse +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 '}';
     }
 
     public void print(){
+        System.out.printf("Patient -> %s %s\n",
+                this.name,
+                this.surname
+        );
+    }
+
+    public void printOwnInfo(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("E dd.MM.yy hh:mm:ss a");
-        System.out.printf("Patient -> %s %s\nTherapy -> %s \nDoctor ->  %s %s\nNurse  ->  %s %s\nStart time -> %s\nEnd time -> %s",
+        System.out.printf("Patient -> %s %s\nTherapy -> %s\nDoctor -> %s %s\nNurse -> %s %s\nStart time -> %s\nEnd time -> %s\n",
                 this.name,
                 this.surname,
-                this.therapy,
-                this.doctor.name,
-                this.doctor.surname,
-                this.nurse.name,
-                this.nurse.surname,
-                dateFormat.format(this.doctor.getStartDate()),
-                dateFormat.format(this.doctor.getEndDate())
+                therapy.name(),
+                doctor.getName(),
+                doctor.getSurname(),
+                nurse.getName(),
+                nurse.getSurname(),
+                dateFormat.format(this.startDate),
+                dateFormat.format(this.endDate)
         );
     }
 }
