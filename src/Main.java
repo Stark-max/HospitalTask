@@ -1,16 +1,18 @@
-import models.entities.Admin;
-import models.entities.Doctors;
+import models.entities.Register;
+import models.entities.Doctor;
 import models.entities.Nurse;
-import models.entities.Patients;
-import models.enums.Therapy;
+import models.entities.Panel;
+import models.entities.Patient;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Admin admin = new Admin();
-        Nurse nurse = new Nurse(1,"Med","Sister");
+        Register admin = new Register();
+        /*Nurse nurse = new Nurse(1,"Med","Sister");
         Nurse nurse2 = new Nurse(2,"Med","Sister");
-        Nurse nurse3 = new Nurse(3,"Med","Sister");
-        Doctors doctor = new Doctors(1,"Asan","Tom");
+        Nurse nurse3 = new Nurse(3,"Med","Sister");*/
+       /* Doctors doctor = new Doctors(1,"Asan","Tom");
         Doctors doctor2 = new Doctors(2,"As","To");
         Patients patient= new Patients(1,"Damir","Amanov");
         Patients patient2= new Patients(2,"Dir","Aman");
@@ -56,6 +58,50 @@ public class Main {
         patient7.printOwnInfo();
         patient8.printOwnInfo();
         patient9.printOwnInfo();
-        patient10.printOwnInfo();
+        patient10.printOwnInfo();*/
+        ArrayList<Doctor>doctorList=new ArrayList<>();
+        Doctor doctor = new Doctor(1, "Леонид Морозов");
+        Doctor doctor2 = new Doctor(2, "Олег Семёнов");
+        doctorList.add(doctor);
+        doctorList.add(doctor2);
+
+        ArrayList<Nurse> nurseList =new ArrayList<>();
+        Nurse nurse = new Nurse(1, "MedSisterA");
+        Nurse nurse2 = new Nurse(2, "MedSisterB");
+        Nurse nurse3 = new Nurse(3, "MedSisterC");
+        nurseList.add(nurse);
+        nurseList.add(nurse2);
+        nurseList.add(nurse3);
+
+        ArrayList<Patient> patientsList = new ArrayList<>();
+        Patient patient = new Patient(1, "Дамир Аманов");
+        Patient patient2 = new Patient(2, "Алексей Иванов");
+        Patient patient3 = new Patient(3, "Артём Смирнов");
+        Patient patient4 = new Patient(4, "Вадим Кузнецов");
+        Patient patient5 = new Patient(5, "Владимир Попов");
+        Patient patient6 = new Patient(6, "Данил Петров");
+        Patient patient7 = new Patient(7, "Денис Соколов");
+        Patient patient8 = new Patient(8, "Дмитрий Михайлов");
+        Patient patient9 = new Patient(9, "Егор Новиков");
+        Patient patient10 = new Patient(10, "Кирилл Фёдоров");
+        patientsList.add(patient);
+        patientsList.add(patient2);
+        patientsList.add(patient3);
+        patientsList.add(patient4);
+        patientsList.add(patient5);
+        patientsList.add(patient6);
+        patientsList.add(patient7);
+        patientsList.add(patient8);
+        patientsList.add(patient9);
+        patientsList.add(patient10);
+        Panel panel = new Panel();
+        panel.appointment(patientsList,doctorList,nurseList);
+        panel.healing(patientsList);
+        panel.duringTherapy(patientsList);
+        panel.printInfo(patientsList);
+        doctorList.remove(doctor2);
+        System.out.println("2222222222222222222222222222222222222222222");
+        panel.appointment(patientsList,doctorList,nurseList);
+        panel.printInfo(patientsList);
     }
 }

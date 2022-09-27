@@ -1,21 +1,20 @@
 package models.entities;
 
-import models.entities.User;
+public class Doctor extends People {
 
-public class Nurse extends People {
-
-    public Nurse() {
+    public Doctor() {
     }
 
-    public Nurse(int id, String name) {
-        super(id,name);
+    public Doctor(int id, String name) {
+        super(id, name);
     }
 
     @Override
     public String toString() {
-        return "Nurse{" +
+        return "Doctor{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }
+
 }

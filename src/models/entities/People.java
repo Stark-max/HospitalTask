@@ -1,17 +1,15 @@
 package models.entities;
 
-public abstract class User {
-    private int id;
+public abstract class People {
+    public int id;
     public String name;
-    public String surname;
 
-    public User() {
+    public People() {
     }
 
-    public User(int id, String name, String surname) {
+    public People(int id, String name) {
         this.id = id;
         this.name = name;
-        this.surname = surname;
     }
 
     public int getId() {
@@ -28,13 +26,5 @@ public abstract class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 }
